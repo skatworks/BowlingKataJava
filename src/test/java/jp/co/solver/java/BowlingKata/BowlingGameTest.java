@@ -16,4 +16,12 @@ public class BowlingGameTest {
 		assertThat(g.score(), is(0));
 	}
 
+	@Test
+	public void testAllOnes() {
+		BowlingGame g = new BowlingGame();
+		for (int i = 0; i < 20; i++) {
+			g.roll(1);
+		}
+		assertThat(g.score(), is(20));
+	}
 }
