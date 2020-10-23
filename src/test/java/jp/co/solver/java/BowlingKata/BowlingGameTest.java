@@ -37,11 +37,17 @@ public class BowlingGameTest {
 
 	@Test
 	public void testOneStrike() throws Exception {
-		g.roll(10);
+		rollStrike();
 		g.roll(3);
 		g.roll(4);
 		rollMany(16, 0);
 		assertThat(g.score(), is(24));
+	}
+
+	@Test
+	public void testPerfectGame() {
+		rollMany(12, 10);
+		assertThat(g.score(), is(300));
 	}
 
 	// メソッド抽出
@@ -55,5 +61,10 @@ public class BowlingGameTest {
 	private void rollSpare() {
 		g.roll(5);
 		g.roll(5);
+	}
+
+	// ストライク
+	private void rollStrike() {
+		g.roll(10);
 	}
 }
