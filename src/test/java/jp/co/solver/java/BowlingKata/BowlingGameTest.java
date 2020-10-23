@@ -29,11 +29,19 @@ public class BowlingGameTest {
 
 	@Test
 	public void testOneSpare() throws Exception {
-		g.roll(5);
-		g.roll(5);
+		rollSpare();
 		g.roll(3);
 		rollMany(17,0);
 		assertThat(g.score(), is(16));
+	}
+
+	@Test
+	public void testOneStrike() throws Exception {
+		g.roll(10);
+		g.roll(3);
+		g.roll(4);
+		rollMany(16, 0);
+		assertThat(g.score(), is(24));
 	}
 
 	// メソッド抽出
@@ -41,5 +49,11 @@ public class BowlingGameTest {
 		for (int i = 0; i < n; i++) {
 			g.roll(pins);
 		}
+	}
+
+	// スペア
+	private void rollSpare() {
+		g.roll(5);
+		g.roll(5);
 	}
 }
