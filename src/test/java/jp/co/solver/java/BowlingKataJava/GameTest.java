@@ -37,6 +37,21 @@ public class GameTest {
 		assertThat(game.score(), is(20));
 	}
 
+	@Test
+	public void ストライクを含む場合() {
+		game.roll(10);
+		game.roll(3);
+		game.roll(4);
+		rollMany(17, 0);
+		assertThat(game.score(), is(24));
+	}
+
+	@Test
+	public void パーフェクトゲームの場合() {
+		rollMany(12, 10);
+		assertThat(game.score(), is(300));
+	}
+
 	// 同じピン数を連続して倒すメソッド
 	private void rollMany(int n, int pins) {
 		for (int i = 0; i < n; i++) {
